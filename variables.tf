@@ -7,3 +7,15 @@ variable "cluster_name" {
   description = "Cluster name"
   default     = "k8s-demo"
 }
+
+variable "k8s_version" {
+  description = "Kubernetes version"
+  default     = "1.15"
+}
+
+variable "nodes_instances_sizes" {
+  default = [
+      "t3.large", 
+      "t3a.large"
+  ]
+}
