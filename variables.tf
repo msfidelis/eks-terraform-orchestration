@@ -19,3 +19,8 @@ variable "nodes_instances_sizes" {
       "t3a.large"
   ]
 }
+
+variable "spot_maximum_price" {
+  default = "0.12"
+}
+

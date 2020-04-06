@@ -1,101 +1,40 @@
-data "aws_iam_policy_document" "eks_service_policy" {
-  statement {
-    sid = ""
-
-    actions = [
-      "ec2:CreateNetworkInterface",
-      "ec2:CreateNetworkInterfacePermission",
-      "ec2:DeleteNetworkInterface",
-      "ec2:DescribeInstances",
-      "ec2:DescribeNetworkInterfaces",
-      "ec2:DescribeSecurityGroups",
-      "ec2:DescribeSubnets",
-      "ec2:DescribeVpcs",
-      "ec2:ModifyNetworkInterfaceAttribute",
-      "iam:ListAttachedRolePolicies",
-      "eks:UpdateClusterVersion"
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
-
-  statement {
-    sid = ""
-
-    actions = [
-      "ec2:CreateTags",
-      "ec2:DeleteTags"
-    ]
-
-    resources = [
-      "arn:aws:ec2:*:*:vpc/*",
-      "arn:aws:ec2:*:*:subnet/*"
-    ]
-  }
-
-  statement {
-    sid = ""
-
-    actions = [
-      "route53:AssociateVPCWithHostedZones"
-    ]
-
-    resources = [
-      "*"
-    ]
-  }
-
-  statement {
-    sid = ""
-
-    actions = [
-      "logs:CreateLogGroup"
-    ]
-
-    resources = [
-      "*"
-    ]
-  }
-
-  statement {
-    sid = ""
-
-    actions = [
-      "logs:CreateLogStream",
-      "logs:DescribeLogStreams",
-      "logs:PutLogEvents"
-    ]
-
-    resources = [
-      "arn:aws:logs:*:*:log-group:/aws/eks/*:*"
-    ]
-  }
-
+data "aws_iam_policy_document" "eks_nodes_role" {
+  version = "2012-10-17"
   statement {
     actions = [
-      "iam:CreateServiceLinkedRole",
+      "sts:AssumeRole",
     ]
 
-    resources = [
-      "*",
-    ]
-
-    condition {
-      test     = "StringLike"
-      variable = "iam:AWSServiceName"
-
-      values = [
-        "eks.amazonaws.com",
-      ]
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com", ]
     }
   }
 
 }
 
-resource "aws_iam_policy" "eks_service_policy" {
-  name   = format("%s-eks-service-policy", var.cluster_name)
-  path   = "/"
-  policy = data.aws_iam_policy_document.eks_service_policy.json
+resource "aws_iam_role" "eks_nodes_role" {
+  name               = format("%s-eks-nodes-role", var.cluster_name)
+  assume_role_policy = data.aws_iam_policy_document.eks_nodes_role.json
+}
+
+resource "aws_iam_role_policy_attachment" "worker-node-AmazonEKSWorkerNodePolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  role       = aws_iam_role.eks_nodes_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "worker-node-AmazonEKS_CNI_Policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+  role       = aws_iam_role.eks_nodes_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "worker-node-AmazonEC2ContainerRegistryReadOnly" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  role       = aws_iam_role.eks_nodes_role.name
+}
+
+
+resource "aws_iam_instance_profile" "worker_node" {
+  name = format("%s-ec2-node", var.cluster_name)
+  role = aws_iam_role.eks_nodes_role.name
 }

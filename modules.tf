@@ -12,4 +12,6 @@ module "eks" {
   cluster_vpc       = module.network.cluster_vpc
   private_subnet_1a = module.network.private_subnet_1a
   private_subnet_1c = module.network.private_subnet_1c
+  nodes_instances_sizes = var.nodes_instances_sizes
+  spot_maximum_price = var.spot_maximum_price
 }
