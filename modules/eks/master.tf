@@ -34,19 +34,19 @@ resource "aws_security_group" "cluster_master_sg" {
 }
 
 resource "aws_security_group_rule" "cluster_ingress_node_https" {
-  from_port                = 443
   protocol                 = "tcp"
   security_group_id        = aws_security_group.cluster_master_sg.id
   source_security_group_id = aws_security_group.cluster_nodes_sg.id
+  from_port                = 443
   to_port                  = 443
   type                     = "ingress"
 }
 
 resource "aws_security_group_rule" "cluster_ingress_workstation_https" {
   cidr_blocks       = ["0.0.0.0/0"]
-  from_port         = 443
   protocol          = "tcp"
   security_group_id = aws_security_group.cluster_master_sg.id
+  from_port         = 443
   to_port           = 443
   type              = "ingress"
 }

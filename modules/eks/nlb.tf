@@ -1,6 +1,7 @@
 resource "aws_lb" "network" {
   name               = format("%s-nlb", var.cluster_name)
   internal           = false
+  
   load_balancer_type = "network"
 
   subnets            = [

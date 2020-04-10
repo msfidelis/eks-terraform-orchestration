@@ -33,7 +33,6 @@ resource "aws_iam_role_policy_attachment" "worker-node-AmazonEC2ContainerRegistr
   role       = aws_iam_role.eks_nodes_role.name
 }
 
-
 resource "aws_iam_instance_profile" "worker_node" {
   name = format("%s-ec2-node", var.cluster_name)
   role = aws_iam_role.eks_nodes_role.name
