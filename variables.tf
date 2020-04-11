@@ -13,7 +13,6 @@ variable "aws_key_path" {
   default = "./resources/ssh/example.pub"
 }
 
-
 variable "k8s_version" {
   description = "Kubernetes version"
   default     = "1.15"
@@ -23,10 +22,6 @@ variable "nodes_instances_sizes" {
   default = [
       "t3.large"
   ]
-}
-
-variable "spot_maximum_price" {
-  default = "0.12"
 }
 
 variable "auto_scale_options" {
