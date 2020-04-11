@@ -70,7 +70,12 @@ kubectl apply -f *
 ### Available flavors 
 
 * Traefik
-* Nginx 
+* NGINX 
+* Haproxy
+* Gloo 
+* Ambassador
+* Kong
+* Contour
 
 ```sh
 cd kubernetes/ingress/{your flavor}/
