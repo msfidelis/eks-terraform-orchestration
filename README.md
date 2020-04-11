@@ -52,6 +52,43 @@ terraform plan
 terraform install --auto-approve
 ```
 
+### Configure credentials to local workstation or bastion host 
+
+```sh
+aws eks --region {region} update-kubeconfig --name {cluster name}
+aws eks --region us-east-1 update-kubeconfig --name k8s-demo
+```
+
+## Deploy applications for this demo 
+
+```sh
+cd kubernetes/applications/
+kubectl apply -f *
+```
+
+## Choose your ingress
+
+### Available flavors 
+
+* Traefik
+* Nginx 
+
+```sh
+cd kubernetes/ingress/{your flavor}/
+```
+
+### Deploy your ingress controller as Daemonset
+
+```sh
+kubectl apply -f ingress.yml
+```
+
+### Deploy the ingress rules
+
+```sh
+kubectl apply -f rules.yml
+```
+
 ## Run tests
 
 ```sh

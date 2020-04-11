@@ -15,12 +15,13 @@ module "eks" {
   public_subnet_1a  = module.network.public_subnet_1a
   public_subnet_1c  = module.network.public_subnet_1c
   nodes_instances_sizes = var.nodes_instances_sizes
-  spot_maximum_price = var.spot_maximum_price
   auto_scale_options = var.auto_scale_options
 
   cluster_key        = aws_key_pair.cluster_key
 }
 
-module "k8s" {
-  source            = "./modules/k8s"
-}
+# Under construction
+
+# module "k8s" {
+#   source            = "./modules/k8s"
+# }

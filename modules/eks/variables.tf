@@ -18,7 +18,5 @@ variable "public_subnet_1c" {}
 
 variable "nodes_instances_sizes" {}
 
-variable "spot_maximum_price" {}
-
 variable "auto_scale_options" {} 
 
