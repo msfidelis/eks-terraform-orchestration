@@ -14,6 +14,17 @@
 
 > :package: :whale: :rocket: Easy Way to Setup EKS with Ingress Controller like Nginx, Traefik, Envoy e etc :rocket: :whale: :package: 
 
+This repo contains methods to deploy this resources on Amazon EKS 
+
+* Custom Ingress Controller behind the ALB to save :money: 
+
+* Jaeger to improve observability 
+
+* Deployment methods for infraestructure and applications
+
+Enjoy and customize to your use case :happy: 
+
+
 ### 🏠 [Homepage](/)
 
 ### ✨ [Demo](/)
@@ -21,13 +32,24 @@
 ## Install
 
 ```sh
-terraform install --auto-approve
+git clone git@github.com:msfidelis/eks-terraform-setup.git
 ```
 
 ## Usage
 
+This repo should be used like template or reference to your project.
+
+### Edit variables.tf
+
+```sh
+vim variables.tf
+```
+
+### Apply 
+
 ```sh
 terraform plan
+terraform install --auto-approve
 ```
 
 ## Run tests
