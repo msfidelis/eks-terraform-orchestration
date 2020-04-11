@@ -20,3 +20,7 @@ module "eks" {
 
   cluster_key        = aws_key_pair.cluster_key
 }
+
+module "k8s" {
+  source            = "./modules/k8s"
+}

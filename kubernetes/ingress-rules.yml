@@ -1,0 +1,32 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: pudim.raj.ninja
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: pudim
+          servicePort: 80
+
+  - host: k8s.raj.ninja
+    http:
+      paths:
+      - path: /whois
+        backend:
+          serviceName: whois
+          servicePort: 8080
+
+  - host: k8s.raj.ninja
+    http:
+      paths:
+      - path: /faker
+        backend:
+          serviceName: faker
+          servicePort: 5000

@@ -1,17 +1,17 @@
-resource "aws_lb" "network" {
-  name               = format("%s-nlb", var.cluster_name)
-  internal           = false
-  
-  load_balancer_type = "network"
+# resource "aws_lb" "network" {
+#   name               = format("%s-nlb", var.cluster_name)
+#   internal           = false
 
-  subnets            = [
-      var.private_subnet_1a.id,
-      var.private_subnet_1c.id
-  ]
+#   load_balancer_type = "network"
 
-  enable_deletion_protection = false
+#   subnets            = [
+#       var.private_subnet_1a.id,
+#       var.private_subnet_1c.id
+#   ]
 
-  tags = map(
-    "kubernetes.io/cluster/${var.cluster_name}", "shared"
-  )
-}
+#   enable_deletion_protection = false
+
+#   tags = map(
+#     "kubernetes.io/cluster/${var.cluster_name}", "shared"
+#   )
+# }
