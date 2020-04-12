@@ -9,7 +9,7 @@
   </a>
   
   <a href="Terraform Compatibility" target="_blank">
-    <img alt="Build" src="https://github.com/msfidelis/eks-terraform-orchestration/workflows/Terraform%20Compatibility/badge.svg?branch=master" />
+    <img alt="Build" src="https://github.com/msfidelis/eks-terraform-orchestration/workflows/Terraform%200.12.*%20compatibility/badge.svg?branch=master" />
   </a>
   
   <a href="https://twitter.com/fidelissauro" target="_blank">
