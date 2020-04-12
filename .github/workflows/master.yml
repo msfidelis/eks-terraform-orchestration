@@ -1,4 +1,4 @@
-name: Terraform Compatibility
+name: Terraform 0.12.* compatibility
 
 on: [push]
 
