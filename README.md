@@ -12,6 +12,8 @@
   </a>
 </p>
 
+![Terraform Compatibility](https://github.com/msfidelis/eks-terraform-orchestration/workflows/Terraform%20Compatibility/badge.svg?branch=master)
+
 > Easy Way to Setup EKS with Ingress Controller like Nginx, Traefik, Envoy e etc
 
 This repo contains methods to deploy this resources on Amazon EKS 
