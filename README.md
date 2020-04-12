@@ -7,12 +7,15 @@
   <a href="LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+  
+  <a href="Terraform Compatibility" target="_blank">
+    <img alt="Build" src="https://github.com/msfidelis/eks-terraform-orchestration/workflows/Terraform%20Compatibility/badge.svg?branch=master" />
+  </a>
+  
   <a href="https://twitter.com/fidelissauro" target="_blank">
     <img alt="Twitter: fidelissauro" src="https://img.shields.io/twitter/follow/fidelissauro.svg?style=social" />
   </a>
 </p>
-
-![Terraform Compatibility](https://github.com/msfidelis/eks-terraform-orchestration/workflows/Terraform%20Compatibility/badge.svg?branch=master)
 
 > Easy Way to Setup EKS with Ingress Controller like Nginx, Traefik, Envoy e etc
 
