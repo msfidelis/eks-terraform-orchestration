@@ -1,4 +1,4 @@
-<h1 align="center"> EKS Setup Example with Terraform :package: :whale: :rocket:  </h1>
+<h1 align=""> EKS Setup Example with Terraform :package: :whale: :rocket:  </h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-v0-blue.svg?cacheSeconds=2592000" />
   <a href="/" target="_blank">
